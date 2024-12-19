@@ -1,0 +1,67 @@
+using System.Runtime.ExceptionServices;
+
+string[,] corporate = 
+{
+    {"Robert", "Bavin"}, {"Simon", "Bright"},
+    {"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+    {"Sarah", "Delucchi"}, {"Sinan", "Ali"},{"Naseer","Khan"}
+};
+string internalDomian="contoso.com";
+string[,] external = 
+{
+    {"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+    {"Shay", "Lawrence"}, {"Daren", "Valdes"}
+};
+string[,] family=
+{
+    {"Baseer","Khan"},{"Abeera","Naseer"},{"Abeeha","Naseer"},
+    {"Nazeeha","Naseer"},{"Arsalan","Ahmd"}
+
+};
+
+string[,] morethanTwoName=
+{
+    {"Naseer","Ahmad","Khan"},{"Arsalan","Ahmad","Khan"},
+    {"Mushtaq","Ahmad","Khan"},{"Shakeel","Ahmad","Khan"}
+};
+string[,] morethanThreeName=
+{
+    {"Naseer","Ahmad","Khan","Dardyal"},{"Arsalan","Ahmad","Khan","Dardyal"},
+    {"Mushtaq","Ahmad","Khan","Dardyal"},{"Shakeel","Ahmad","Khan","Dardyal"}
+};
+
+string familyDomain="family.com";
+string khushhaDomian="kushhal.com";
+
+string externalDomain = "hayworth.com";
+
+for (int i = 0; i < corporate.GetLength(0); i++) 
+{
+    DisplayEmailAddress(name:corporate[i,0], last:corporate[i,1], internalDomian);
+    // display internal email addresses
+}
+
+for (int i = 0; i < external.GetLength(0); i++) 
+{
+    // display external email addresses
+    DisplayEmailAddress(name:external[i,0], last:external[i,1], externalDomain);
+}
+//method for the family 
+for(int i=0; i <family.GetLength(0);i++){
+    DisplayEmailAddress(name:family[i,0],last:family[i,1], familyDomain);
+    
+}
+//User name for people haveing middle name
+for(int i=0; i<morethanTwoName.GetLength(0);i++){
+    DisplayEmailAddress(name:morethanTwoName[i,0], last:morethanTwoName[i,2],khushhaDomian);
+}
+//user name for people have more than three names
+for(int i=0;i<morethanThreeName.GetLength(0);i++){
+    DisplayEmailAddress(name:morethanThreeName[i,0], last:morethanThreeName[i,3],khushhaDomian);
+}
+
+void DisplayEmailAddress(string name, string last, string domianName){
+    string email=name.Substring(0,2)+last;
+    email=email.ToLower();
+    Console.WriteLine($"{email}@{domianName}");
+}
